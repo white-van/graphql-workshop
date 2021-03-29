@@ -1,13 +1,20 @@
 import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import * as Express from "express";
-import { buildSchema } from "type-graphql";
+import { buildSchema, Query, Resolver } from "type-graphql";
 
-import { PlanetResolver, RoverResolver, MediaResolver } from './resolvers'; 
+//import { PlanetResolver, RoverResolver, MediaResolver } from './resolvers'; 
 
+@Resolver()
+class StubResolver {
+  @Query(()=> String)
+  hello(){
+    return "Hello The Show!"
+  }
+}
 const main = async () => {
   const schema = await buildSchema({
-    resolvers: [PlanetResolver, RoverResolver, MediaResolver]
+    resolvers: [StubResolver]
   });
 
   const apolloServer = new ApolloServer({ schema });

@@ -9,44 +9,32 @@ export class RoverResolver {
   @Query(() => [Rover], { nullable: "items" })
   async getRovers(){
     // TODO: finish this function
-    return rovers;
+    return null;
   }
   @Query(() => Rover, {nullable: true})
   async findRover(@Arg("name") name: string) {
     //TODO: finish this function
-    return rovers.find((rover) => rover.name === name);
+    return null;
   }
 
   //Update
   @Mutation(() => Rover, {nullable: true})
   async updateRover(@Arg("name") name: string, @Arg("data") data: updateRoverInput) {
     //TODO: finish this function
-    const roverIndex = rovers.findIndex((rover) => rover.name === name);
-    if (roverIndex === -1){
-      return null;
-    }
-    const newRover = {...rovers[roverIndex], ...data} as RoverState;
-    rovers[roverIndex] = newRover;
-    return newRover;
+    return null;
   }
 
   // Add
   @Mutation(() => Rover, {nullable: true})
   async addRover(@Arg("data") data: addRoverInput) {
     // TODO: Finish this function
-    if (rovers.find(rover => rover.name === data.name)) {
-      return null;
-    }
-    const newRover = { id: this.count.toString(), ...data } as unknown as RoverState;
-    this.count += 1;
-    rovers.push(newRover);
-    return newRover
+    return null;
   }
 
   @FieldResolver()
   async planetVisited(@Root() rover: RoverState){
-    const planet = planets.find(planet => planet.id === rover.planetVisited);
-    return planet
+     //TODO: finish this function
+    return null;
   }
 
 }
