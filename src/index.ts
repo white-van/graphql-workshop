@@ -3,7 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import * as Express from "express";
 import { buildSchema, Query, Resolver } from "type-graphql";
 
-//import { PlanetResolver, RoverResolver, MediaResolver } from './resolvers'; 
+import { PlanetResolver, RoverResolver, MediaResolver } from './resolvers'; 
 
 @Resolver()
 class StubResolver {
@@ -14,7 +14,7 @@ class StubResolver {
 }
 const main = async () => {
   const schema = await buildSchema({
-    resolvers: [StubResolver]
+    resolvers: [StubResolver, PlanetResolver, RoverResolver, MediaResolver]
   });
 
   const apolloServer = new ApolloServer({ schema });

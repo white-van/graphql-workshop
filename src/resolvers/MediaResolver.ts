@@ -1,5 +1,5 @@
 import { Resolver, Query, Arg, FieldResolver, Root } from 'type-graphql';
-import axios from 'axios';
+//import axios from 'axios';
 
 import { Media } from '../models';
 import { MediaFilterInput } from '../inputs';
@@ -9,7 +9,12 @@ import { Medias as medias, Planets as planets, Rovers as rovers, MediaState } fr
 export class MediaResolver {
   @Query(() => Media, { nullable: true })
   async getMedia(@Arg("planetName") planetName: String, @Arg("roverName") roverName: string, @Arg("filterBy", {nullable: true}) filters: MediaFilterInput){
-
+    console.log(planetName);
+    console.log(roverName);
+    console.log(medias);
+    console.log(planets);
+    console.log(rovers);
+    console.log(filters);
     // A secret for later! :)
     /*if (planetName === 'Mars' && ['Spirit', 'Opportunity', 'Curiosity', 'Perseverance'].includes(roverName)) {
       const keyPairs = Object.entries(filters).map(([key,value]) => `${key}=${value}`).join('&')
@@ -24,11 +29,13 @@ export class MediaResolver {
   @FieldResolver()
   async planet(@Root() media: MediaState){
     //TODO: fix this function
+    console.log(media);
     return null;
   }
   @FieldResolver()
   async rover(@Root() media: MediaState){
     //TODO: fix this function
+    console.log(media);
     return null;
   }
 }

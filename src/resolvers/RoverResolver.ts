@@ -14,6 +14,9 @@ export class RoverResolver {
   @Query(() => Rover, {nullable: true})
   async findRover(@Arg("name") name: string) {
     //TODO: finish this function
+    console.log(name);
+    console.log(rovers);
+    console.log(planets);
     return null;
   }
 
@@ -21,6 +24,8 @@ export class RoverResolver {
   @Mutation(() => Rover, {nullable: true})
   async updateRover(@Arg("name") name: string, @Arg("data") data: updateRoverInput) {
     //TODO: finish this function
+    console.log(name);
+    console.log(data);
     return null;
   }
 
@@ -28,12 +33,14 @@ export class RoverResolver {
   @Mutation(() => Rover, {nullable: true})
   async addRover(@Arg("data") data: addRoverInput) {
     // TODO: Finish this function
+    console.log(data);
     return null;
   }
 
   @FieldResolver()
   async planetVisited(@Root() rover: RoverState){
      //TODO: finish this function
+     console.log(rover);
     return null;
   }
 
